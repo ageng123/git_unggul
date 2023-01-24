@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        //
+        Schema::create("penjualans", function(Blueprint $table){
+            $table->id();
+            $table->string("id_nota")->nullable();
+            $table->date('tgl')->nullable();
+            $table->string('kode_pelanggan',200);
+            $table->unsignedBigInteger('subtotal');
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        //
+        Schema::dropIfExists('penjualans');
+    }
+};
